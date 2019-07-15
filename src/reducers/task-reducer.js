@@ -58,7 +58,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         priorityFilter: action.payload
       };
-    };
+    }
 
     default:
       return state;
