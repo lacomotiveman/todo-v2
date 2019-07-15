@@ -30,7 +30,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         task:[...state.task, action.payload]
       };
-    };
+    }
     
     case UPDATE_TASK: {
       return {
@@ -41,16 +41,16 @@ export default (state = INITIAL_STATE, action) => {
           } else {
             return item
           };
-        });
+        })
       };
-    };
+    }
     
     case DELETE_TASK: {
       return {
         ...state,
         task: state.task.filter(item => action.payload !== item.id)
       };
-    };
+    }
 
 
     case PRIORITY_FILTER_SET: {
