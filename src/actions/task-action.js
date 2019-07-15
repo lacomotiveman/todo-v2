@@ -1,4 +1,4 @@
-import {CREATE_TASK, UPDATE_TASK, DELETE_TASK, PRIORITY_FILTER_SET} from './index'
+import {CREATE_TASK, UPDATE_TASK, FINISH_TASK, DELETE_TASK, PRIORITY_FILTER_SET} from './index'
 
 export const createTask = (payload) => {
   return {
@@ -20,6 +20,14 @@ export const deleteTask = (payload) => {
     payload // ID TASK
   };
 };
+
+export const finishTask = (payload) => {
+  return {
+    type: FINISH_TASK,
+    payload // ID TASK
+  };
+};
+
 
 export const setPriorityFilter = (payload) => {
   return {

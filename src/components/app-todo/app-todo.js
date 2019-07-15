@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {createTask,deleteTask,setPriorityFilter,updateTask} from '../../actions/task-action'
+import {createTask,deleteTask,setPriorityFilter,updateTask, finishTask} from '../../actions/task-action'
 import AppTodoAddTask from '../app-todo-addtask';
 import TodoList from '../todo-list';
 
@@ -9,6 +9,20 @@ class  AppTodo extends Component {
   saveTask = (newTask) => {
       this.props.createTask(newTask);
   };
+
+  deleteTask = (id) => {
+      this.props.deleteTask(id);
+  };
+
+  editTask = (editedTask) => {
+      this.props.updateTask(editedTask);
+  }
+
+  finishTask = (id) => {
+      this.props.finishTask(id);
+  }
+
+
 
   render(){
       return (
@@ -21,7 +35,12 @@ class  AppTodo extends Component {
                 </div>
                 <div className="col-sm-8 text-left">
                     <AppTodoAddTask saveTask={this.saveTask}/>
-                    <TodoList list={this.props.tasks}/> 
+                    <TodoList 
+                      list={this.props.tasks}
+                      finishTask={this.finishTask}
+                      editTask={this.editTask}
+                      deleteTask={this.deleteTask}
+                    /> 
                 </div>
               </div>
             </div>
@@ -37,7 +56,11 @@ const mapStateToProps = (state) => ({
 
 
 const mapActionToProps = ({
-    createTask,updateTask,setPriorityFilter,deleteTask,
+    createTask,
+    updateTask,
+    setPriorityFilter,
+    deleteTask,
+    finishTask
 });
 
 export default connect(mapStateToProps, mapActionToProps)(AppTodo);

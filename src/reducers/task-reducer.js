@@ -1,4 +1,4 @@
-import { CREATE_TASK, UPDATE_TASK, PRIORITY_FILTER_SET, DELETE_TASK } from '../actions/index';
+import { CREATE_TASK, UPDATE_TASK, FINISH_TASK, PRIORITY_FILTER_SET, DELETE_TASK } from '../actions/index';
 
 /*
 
@@ -24,8 +24,8 @@ const INITIAL_STATE = {
         title: 'title', 
         description: 'description', 
         priority: 'high', 
-        date_deadline: '123481824', 
-        date_finish: '17801431395',
+        date_deadline: '2019-07-01', 
+        date_finish: '',
     },
   ],
   priorityFilter:'high',
@@ -53,6 +53,20 @@ export default (state = INITIAL_STATE, action) => {
         })
       };
     }
+
+    case FINISH_TASK: {
+      return {
+        ...state,
+        task: state.task.map(item => {
+          if (item.id === action.payload) {
+            item.date_finish = new Date().toISOString().slice(0,10);
+            return item;
+          } else {
+            return item;
+          };
+        })
+      };
+    }
     
     case DELETE_TASK: {
       return {
@@ -60,6 +74,7 @@ export default (state = INITIAL_STATE, action) => {
         task: state.task.filter(item => action.payload !== item.id)
       };
     }
+
 
 
     case PRIORITY_FILTER_SET: {

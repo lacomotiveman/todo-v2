@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import TodoListItem from '../todo-list-item';
 
 class TodoList extends Component {
   render () {
@@ -6,14 +7,23 @@ class TodoList extends Component {
       <div className="panel-heading">
         ДЕЛА:
         <ul>
-          <li>Дело1 </li>
-          <li>Дело2 </li>
-          <li>Дело3 </li>
-          <li>Дело4 </li>
+          {
+            this.props.list.map((task, index) => {
+              return( 
+                <TodoListItem 
+                    key={task.id}
+                    task={task}
+                    finishTask={this.props.finishTask}
+                    deleteTask={this.props.deleteTask}
+                    editTask={this.props.editTask}
+                />
+              );
+            })
+          }
         </ul>
       </div>
     )
   }
 }
 
-export default TodoList
+export default TodoList;
