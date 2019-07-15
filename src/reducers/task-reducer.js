@@ -18,8 +18,17 @@ import { CREATE_TASK, UPDATE_TASK, PRIORITY_FILTER_SET, DELETE_TASK } from '../a
 // TODO Priority и их фильтр в числовом формате ?
 
 const INITIAL_STATE = {
-  task: [],
-  priorityFilter:'',
+  task: [
+    {
+        id: '123', 
+        title: 'title', 
+        description: 'description', 
+        priority: 'high', 
+        date_deadline: '123481824', 
+        date_finish: '17801431395',
+    },
+  ],
+  priorityFilter:'high',
 };
 
 export default (state = INITIAL_STATE, action) => {
