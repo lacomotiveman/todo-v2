@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {createTask,deleteTask,setPriorityFilter,updateTask} from '../../actions/task-action'
+import AppTodoAddTask from '../app-todo-addtask'
+
 
 class  AppTodo extends Component {
+
+  saveTask = (newTask) => {
+      this.props.createTask(newTask);
+  };
+
   render(){
       return (
           <div className="App">
@@ -13,7 +20,7 @@ class  AppTodo extends Component {
                   ФИЛЬТР
                 </div>
                 <div className="col-sm-8 text-left">
-                  <div> НОВАЯ ЗАДАЧА </div> 
+                    <AppTodoAddTask saveTask={this.saveTask}/>
                   <div> СПИСОК ЗАДАЧ </div> 
                   <div>TASKS {console.log(this.props.tasks)}</div>
                 </div>
