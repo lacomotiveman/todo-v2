@@ -25,7 +25,7 @@ class AppTodoAddTask extends Component {
             <div className={"col-sm-12"}>
               <input className={'form-control'} id='txtTitle' placeholder={'Title'} type={'text'} />
               <input className={'form-control'} id='txtDesc' placeholder={'Description'} type={'text'} />
-              <input className={'form-control'} id='txtDeadline' placeholder={'Выполнить до'} type={'date'} />
+              <input className={'form-control'} id='txtDeadline' placeholder={'Выполнить до'} type={'datetime-local'} />
               <select id={"selPriority"} className={'form-control'}>
                 <option value={'high'}>High</option>
                 <option value={'medium'}>Medium</option>

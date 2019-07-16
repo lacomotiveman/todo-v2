@@ -59,7 +59,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         task: state.task.map(item => {
           if (item.id === action.payload) {
-            item.date_finish = new Date().toISOString().slice(0,10);
+            item.date_finish = new Date().toISOString().slice(0,16);
             return item;
           } else {
             return item;

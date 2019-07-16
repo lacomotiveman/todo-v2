@@ -48,7 +48,7 @@ class TodoListItemEditor extends Component {
                    onChange={()=>{this.setState({date_deadline:document.getElementById('txtDeadline'+this.state.id).value})}}
                    id={'txtDeadline'+this.state.id}
                    className={'form-control'}
-                   type="date"/>
+                   type="datetime-local"/>
         </p>
         <p className={'col-sm-8'}>
             <select id={"selPrioritytemp"+this.state.id}
