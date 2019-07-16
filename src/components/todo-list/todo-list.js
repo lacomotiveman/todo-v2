@@ -6,7 +6,7 @@ class TodoList extends Component {
     return (
       <div className="panel-heading">
         ДЕЛА:
-        <ul>
+        <ul className="list-group">
           {
             this.props.list.map((task, index) => {
               return( 

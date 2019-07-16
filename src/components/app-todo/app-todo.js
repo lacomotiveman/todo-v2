@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {createTask,deleteTask,setPriorityFilter,updateTask, finishTask} from '../../actions/task-action'
 import AppTodoAddTask from '../app-todo-addtask';
 import TodoList from '../todo-list';
+import TodoFilter from '../todo-filter';
 
 class  AppTodo extends Component {
 
@@ -22,21 +23,49 @@ class  AppTodo extends Component {
       this.props.finishTask(id);
   }
 
-
+  onPriorityFilterChange = (value) => {
+      this.props.setPriorityFilter(value);
+  };
 
   render(){
+
+      let filteredTasks;
+      switch(this.props.priorityFilter){
+
+        case('normal'):{
+          filteredTasks = this.props.tasks.filter( item => item.priority==='normal' );
+          break;
+        }
+        case('medium'):{
+          filteredTasks = this.props.tasks.filter( item => item.priority==='medium' );
+          break;
+        }
+        case('high'):{
+          filteredTasks = this.props.tasks.filter( item => item.priority==='high' );
+          break;
+        }
+
+        default:{
+          filteredTasks = this.props.tasks;
+        }
+
+      };
+
       return (
           <div className="App">
             <h1 className="App-header">TODO List v2</h1>
             <div className="container-fluid">
               <div className="row content">
                 <div className="col-sm-2">
-                  ФИЛЬТР
+                  <TodoFilter
+                    selectPriority = {this.props.priorityFilter}
+                    onPriorityFilterChange = {this.onPriorityFilterChange}
+                  />
                 </div>
                 <div className="col-sm-8 text-left">
                     <AppTodoAddTask saveTask={this.saveTask}/>
                     <TodoList 
-                      list={this.props.tasks}
+                      list={filteredTasks}
                       finishTask={this.finishTask}
                       editTask={this.editTask}
                       deleteTask={this.deleteTask}
